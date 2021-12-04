@@ -41,20 +41,20 @@ public class MovimentacoesController {
 //		return ResponseEntity.ok(mRepository.findMovByContaId(id));
 //	}
 	
-	@PostMapping("/depositar")
+	@PostMapping("depositar")
 	public ResponseEntity<ResponseEntity<Movimentacoes>> deposito(@RequestBody Movimentacoes novaMovimentacao) {
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(mService.depositar(novaMovimentacao));
 	}
 	
-	@PostMapping("/sacar")
+	@PostMapping("sacar")
 	public ResponseEntity<ResponseEntity<Movimentacoes>> sacar(@RequestBody Movimentacoes novaMovimentacao) {
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(mService.sacar(novaMovimentacao));
 	}
 	
 	
-	@PostMapping("/transferir/{id}")
+	@PostMapping("transferir/{id}")
 	public ResponseEntity<ResponseEntity<Movimentacoes>> transferir(
 							@RequestBody Movimentacoes novaMovimentacao, @PathVariable Movimentacoes id) {
 		return ResponseEntity.status(HttpStatus.OK)

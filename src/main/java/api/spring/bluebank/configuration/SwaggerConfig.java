@@ -2,9 +2,14 @@ package api.spring.bluebank.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpMethod;
+
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,15 +23,26 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@PropertySource("classpath:openapi.properties") 
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("api.spring.bluebank.controller"))
-				.paths(PathSelectors.any()).build().apiInfo(metadata()).useDefaultResponseMessages(false)
+				.apis(RequestHandlerSelectors.basePackage("api.spring.bluebank.controller")).paths(PathSelectors.any())
+				.build().apiInfo(metadata()).useDefaultResponseMessages(false)
 				.globalResponses(HttpMethod.GET, responseMessageForGET());
 	}
 
+	public class OpenApiConfig { 
+		@Bean
+		public GroupedOpenApi rootGroup() { 
+			return GroupedOpenApi.builder()
+					.group("root")
+					.addOperationCustomizer((operation, handlerMethod) -> { 
+						operation.addSecurityItem(new SecurityRequirement()
+								.addList("bearerAuth")); 
+						return operation; }).build(); } 
+	}
 	public static ApiInfo metadata() {
 		return new ApiInfoBuilder().title("API - Banco BlueBank").description("Projeto API Spring/AWS - Blue Bank")
 				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("http://localhost:8080/swagger-ui/")
@@ -34,7 +50,7 @@ public class SwaggerConfig {
 	}
 
 	private static Contact contact() {
-		return new Contact("Hanely Taniguchi", "https://github.com/Honey-lee429/projetofinalpan-1", "hanely.menezes@gmail.com");
+		return new Contact("Hanely Taniguchi", "https://github.com/nyodinariai/S1-T2-BlueBank.git", "hanely.menezes@gmail.com");
 	}
 
 	private static List<Response> responseMessageForGET() {

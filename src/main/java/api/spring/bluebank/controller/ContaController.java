@@ -22,7 +22,7 @@ import api.spring.bluebank.service.ContaService;
 @RequestMapping("/conta")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ContaController {
-	private @Autowired ContaService service;
+	//private @Autowired ContaService service;
 	private @Autowired ContaRepository repository;
 	
 	@GetMapping

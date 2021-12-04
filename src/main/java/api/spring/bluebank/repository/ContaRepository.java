@@ -14,6 +14,6 @@ public interface ContaRepository extends JpaRepository<Conta, Long>{
 	@Query(value = "SELECT * FROM conta c WHERE c.conta = :conta ", nativeQuery = true)
 	List<Conta> findByConta( Conta conta);
 
-	@Query(value = "SELECT saldo FROM conta c WHERE c.id = :id", nativeQuery = true)
-	Conta findByContaId(Conta conta);
+//	@Query(value = "SELECT saldo FROM conta c WHERE c.id = :id", nativeQuery = true)
+//	Conta findByContaId(Conta conta);
 }
