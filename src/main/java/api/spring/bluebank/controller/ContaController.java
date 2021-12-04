@@ -36,10 +36,10 @@ public class ContaController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("saldo/{id}")
-	public ResponseEntity<Conta> saldoPorId(@PathVariable Long id){
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp).getBody().getSaldo());
-	}
+//	@GetMapping("saldo/{id}")
+//	public ResponseEntity<Conta> saldoPorId(@PathVariable Long id){
+//		return repository.findById(id).map(resp -> ResponseEntity.ok(resp).getBody().getSaldo());
+//	}
 
 	@PostMapping("criar")
 	public ResponseEntity<Conta> criar(@RequestBody Conta conta) {
