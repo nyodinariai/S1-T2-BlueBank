@@ -35,8 +35,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure (HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 		//.antMatchers("/**").permitAll()
-		.antMatchers(HttpMethod.POST, "cliente/logar").permitAll()
-		.antMatchers(HttpMethod.POST, "cliente/cadastrar").permitAll()
+		.antMatchers(HttpMethod.POST, "/cliente/logar").permitAll()
+		.antMatchers(HttpMethod.POST, "/cliente/cadastrar").permitAll()
+		.antMatchers(HttpMethod.POST, "/conta/criar").permitAll()
 		.antMatchers("/swagger**/**	").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()

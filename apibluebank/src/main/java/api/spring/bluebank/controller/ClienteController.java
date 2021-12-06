@@ -51,25 +51,25 @@ public class ClienteController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping("/cadastrar")
+	@PostMapping("cadastrar")
 	public ResponseEntity<Object> cadastrarCliente(@RequestBody Cliente novocliente) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarCliente(novocliente));
 	}
 
-	@PostMapping("/logar")
+	@PostMapping("logar")
 	public ResponseEntity<Cliente> autenticar(@RequestBody Optional<Cliente> user) {
 		return service.logar(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
-	@PutMapping("/id/{id}")
+	@PutMapping("id/{id}")
 	public ResponseEntity<Optional<Cliente>> alterarEmail(@PathVariable(value = "id") Long id,
 			@RequestBody Cliente clienteParaAtualizar) {
 		return ResponseEntity.status(HttpStatus.OK).body(service.alterarEmail(id, clienteParaAtualizar));
 
 	}
 
-	@DeleteMapping("/id/{id}")
+	@DeleteMapping("id/{id}")
 	public void deletar(@PathVariable Long id) {
 		repository.deleteById(id);
 	}

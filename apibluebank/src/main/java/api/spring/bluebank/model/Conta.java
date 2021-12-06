@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "conta")
@@ -22,7 +23,9 @@ public class Conta {
 	private int agencia;
 
 	private double saldo;
-
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(length = 4)
 	private Long conta;
 
 	private static int total; // esse atributo serve para sabermos quantas contas foram abertas
