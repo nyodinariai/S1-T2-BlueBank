@@ -34,3 +34,73 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Jira](https://www.atlassian.com/br/software/jira/)
 - [Main Repository]()
 - [Xampp]()
+
+  
+> ### 🛠 Estrutura de Diretórios  
+  
+  ```shell
+└───apibluebank  
+    │   .gitignore  
+    │   api-spring-aws.iml  
+    │   buildspec.yml  
+    │   mvnw  
+    │   mvnw.cmd  
+    │   pom.xml  
+    │   README.md   
+    └───src  
+        ├───main  
+        │   ├───java  
+        │   │   └───api  
+        │   │       └───spring  
+        │   │           └───bluebank  
+        │   │               │   ApibluebankApplication.java  
+        │   │               │   buildspec.yml  
+        │   │               │  
+        │   │               ├───configuration  
+        │   │               │       SwaggerConfig.java  
+        │   │               │  
+        │   │               ├───controller  
+        │   │               │       ClienteController.java  
+        │   │               │       ContaController.java  
+        │   │               │       MovimentacoesController.java  
+        │   │               │  
+        │   │               ├───exception  
+        │   │               │       NaoEcontrado.java  
+        │   │               │  
+        │   │               ├───model  
+        │   │               │   │   Cliente.java  
+        │   │               │   │   Conta.java  
+        │   │               │   │   Endereco.java  
+        │   │               │   │   Movimentacoes.java  
+        │   │               │   │   TipoCliente.java  
+        │   │               │   │  
+        │   │               │   └───enun  
+        │   │               │           TipoCliente.java  
+        │   │               │           TipoConta.java  
+        │   │               │           TipoMovimentacao.java  
+        │   │               │           UF.java  
+        │   │               │  
+        │   │               ├───repository  
+        │   │               │       ClienteRepository.java  
+        │   │               │       ContaRepository.java  
+        │   │               │       MovimentacoesRepository.java  
+        │   │               │  
+        │   │               ├───security  
+        │   │               │       BasicSecurityConfig.java  
+        │   │               │       UserDetailsImplements.java  
+        │   │               │       UserDetailsServiceImplements.java  
+        │   │               │  
+        │   │               └───service  
+        │   │                       ClienteService.java  
+        │   │                       ContaService.java  
+        │   │                       MovimentacoesService.java  
+        │   │  
+        │   └───resources  
+        │           application.properties  
+        │  
+        └───test  
+            └───java  
+                └───api  
+                    └───spring  
+                        └───bluebank  
+                                ApibluebankApplicationTests.java  
