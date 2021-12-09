@@ -1,5 +1,6 @@
 package api.spring.bluebank.repository;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	
 	@Query(value = "SELECT * FROM cliente c WHERE c.cpf= :cpf ", nativeQuery = true)
 	List<Cliente>findCPF(String cpf);
+	
+	Optional<Cliente> getByEmail(Constructor<Cliente> constructor);
 }

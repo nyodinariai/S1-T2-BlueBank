@@ -50,6 +50,7 @@ public class ClienteService {
 				login.get().setToken(authHeader);
 				login.get().setNome(clienteExistente.get().getNome());
 				login.get().setSobrenome(clienteExistente.get().getSobrenome());
+				login.get().setEmail(clienteExistente.get().getEmail());
 				login.get().setCpf(clienteExistente.get().getCpf());
 
 				return login;

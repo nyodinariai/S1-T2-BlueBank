@@ -18,7 +18,7 @@ public class UserDetailsImplements implements UserDetails {
 
 	public UserDetailsImplements(Cliente cliente) {
 		super();
-		this.userName = cliente.getNome();
+		this.userName = cliente.getEmail();
 		this.password = cliente.getSenha();
 	}
 
@@ -33,12 +33,12 @@ public class UserDetailsImplements implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return null;
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		return null;
+		return userName;
 	}
 
 	@Override

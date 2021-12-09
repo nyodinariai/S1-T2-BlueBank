@@ -44,13 +44,17 @@ public class SwaggerConfig {
 						return operation; }).build(); } 
 	}
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder().title("API - Banco BlueBank").description("Projeto API Spring/AWS - Blue Bank")
-				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("http://localhost:8080/swagger-ui/")
+		return new ApiInfoBuilder()
+				.title("API - Banco BlueBank")
+				.description("Projeto API Spring/AWS - Blue Bank")
+				.version("1.0.0")
+				.license("Apache License Version 2.0")
+				.licenseUrl("http://localhost:8080/swagger-ui/")
 				.contact(contact()).build();
 	}
 
 	private static Contact contact() {
-		return new Contact("Hanely Taniguchi", "https://github.com/nyodinariai/S1-T2-BlueBank.git", "hanely.menezes@gmail.com");
+		return new Contact("Hanely Taniguchi", "https://github.com/nyodinariai/S1-T2-BlueBank\r\n", "hanely.menezes@gmail.com");
 	}
 
 	private static List<Response> responseMessageForGET() {
