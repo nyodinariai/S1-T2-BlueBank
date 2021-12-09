@@ -20,6 +20,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -50,6 +51,7 @@ public class Movimentacoes{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "conta_id_fk", nullable = false)
 	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonIgnoreProperties({"cliente"})
 	private Conta conta;
 
 	private Double saldoFinal;

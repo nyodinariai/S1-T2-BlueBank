@@ -46,7 +46,7 @@ public class ClienteController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
-	@GetMapping("id/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
@@ -62,14 +62,14 @@ public class ClienteController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
-	@PutMapping("id/{id}")
+	@PutMapping("{id}")
 	public ResponseEntity<Optional<Cliente>> alterarEmail(@PathVariable(value = "id") Long id,
 			@RequestBody Cliente clienteParaAtualizar) {
 		return ResponseEntity.status(HttpStatus.OK).body(service.alterarEmail(id, clienteParaAtualizar));
 
 	}
 
-	@DeleteMapping("id/{id}")
+	@DeleteMapping("{id}")
 	public void deletar(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
