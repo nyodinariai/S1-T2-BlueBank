@@ -69,7 +69,7 @@ public class ClienteController {
 
 	}
 
-	@DeleteMapping("/id/{id}")
+	@DeleteMapping("id/{id}")
 	public void deletar(@PathVariable Long id) {
 		repository.deleteById(id);
 	}

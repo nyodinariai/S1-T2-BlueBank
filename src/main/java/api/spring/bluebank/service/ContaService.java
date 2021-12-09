@@ -14,13 +14,7 @@ import api.spring.bluebank.repository.MovimentacoesRepository;
 
 @Service
 public class ContaService {
-//	@Autowired
-//	private ContaRepository repository;
-	
-//	public ResponseEntity<Conta> saldoPorId(Conta conta){
-//		List<Conta> contaExiste = repository.findByConta(conta.getId());
-//	}
-	
+
 	
 	
 }
