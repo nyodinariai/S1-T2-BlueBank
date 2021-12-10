@@ -31,21 +31,21 @@ public class SnsAwsController {
 
 	String TOPIC_ARN = "arn:aws:sns:us-east-1:965934840569:Squad1_sns";
 
-	@GetMapping("addSubscription/{email}")
+	@GetMapping("inscricao/{email}")
 	public String addSubscription(@PathVariable final String email) {
 		final SubscribeRequest request = new SubscribeRequest(TOPIC_ARN, "email", email);
 		snsClient.subscribe(request);
 		return "Subscription request is peding. Check your e-mail: " + email;
 	}
 
-	@GetMapping("sendNotification")
+	@GetMapping("enviarnotificacao")
 	public String publishmessageToTopic() {
-		PublishRequest publishRequest = new PublishRequest(TOPIC_ARN, buildEmailBody(), "Sua conta foi criada.");
+		PublishRequest publishRequest = new PublishRequest(TOPIC_ARN, corpoDoEmail(), "Sua conta foi criada.");
 		snsClient.publish(publishRequest);
 		return "Notificação enviada com suceso";
 	}
 
-	private String buildEmailBody() {
+	private String corpoDoEmail() {
 		return "Querido cliente,\n" + 
 					"\n" + 
 					"\n" + 

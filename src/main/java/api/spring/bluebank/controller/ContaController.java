@@ -31,7 +31,7 @@ public class ContaController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("transacoes/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Conta> buscarPorId(@PathVariable Long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());

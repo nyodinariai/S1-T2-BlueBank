@@ -1,8 +1,6 @@
 package api.spring.bluebank.model;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,48 +14,41 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import api.spring.bluebank.model.enun.TipoMovimentacao;
 
-
 @Entity
-@Table(name="movimentacoes")
-public class Movimentacoes{
+@Table(name = "movimentacoes")
+public class Movimentacoes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-//	@Column(name = "conta_id")
-//	private Long conta;
-	
-	//Saque/Deposito/Pagamento
+	// Saque/Deposito/Pagamento
 	@Column(name = "tipo_movimentacao", nullable = false, length = 60)
 	private TipoMovimentacao tipoMovimentacao;
-	
+
 	@Column(name = "valor", nullable = false, length = 60)
 	private Double valor;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data")
 	private Date data = new java.sql.Date(System.currentTimeMillis());
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "conta_id_fk", nullable = false)
 	@JsonProperty(access = Access.WRITE_ONLY)
-	@JsonIgnoreProperties({"cliente"})
+	@JsonIgnoreProperties({ "cliente" })
 	private Conta conta;
 
 	private Double saldoFinal;
 
 	private Double saldoInicial;
-	
+
 	public Double getSaldoInicial() {
 		return saldoInicial;
 	}
@@ -77,7 +68,7 @@ public class Movimentacoes{
 	public Movimentacoes() {
 		this(new Date());
 	}
-	
+
 	public Movimentacoes(Conta conta, TipoMovimentacao movNome, Double valor, Double saldoInicial, Double saldoFinal) {
 		super();
 		this.setConta(conta);
@@ -91,7 +82,6 @@ public class Movimentacoes{
 		super();
 		this.data = data;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -125,16 +115,7 @@ public class Movimentacoes{
 		this.data = data;
 	}
 
-//	public Long getConta() {
-//		return conta;
-//	}
-//
-//
-//	public void setConta(Long conta) {
-//		this.conta = conta;
-//	}
-	
-	
+
 	public Conta getConta() {
 		return conta;
 	}
@@ -142,5 +123,5 @@ public class Movimentacoes{
 	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
-	
+
 }
