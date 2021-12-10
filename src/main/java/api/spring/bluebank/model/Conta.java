@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "conta")
 public class Conta {
@@ -33,6 +35,7 @@ public class Conta {
 	// DATABASE RELATIONSHIP
 
 	@OneToMany(mappedBy = "conta")
+	@JsonIgnoreProperties({"cliente"})
 	private List<Movimentacoes> movimentacoes = new ArrayList<>();
 
 	@ManyToOne
