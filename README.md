@@ -10,8 +10,8 @@
 > ### 🛠 Desenvolvedores da Squad
 
 - [Clayton Cesar Batista](https://github.com/Claytoncb82/)
-- [Hanna](https://github.com/Honey-lee429)
-- [Marcos](https://github.com/DevMarcus007)
+- [Hanely Taniguchi](https://github.com/Honey-lee429)
+- [Marcus Thadeu da Silva Batista](https://github.com/DevMarcus007)
 - [Nathan Liyodi Nariai](https://github.com/nyodinariai)
 
 > ### Endpoints
