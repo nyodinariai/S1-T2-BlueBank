@@ -14,12 +14,28 @@
 - [Marcos](https://github.com/DevMarcus007)
 - [Nathan Liyodi Nariai](https://github.com/nyodinariai)
 
-> ### Back-End
+> ### Endpoints
 
-- [x] Cadastro de Cliente
-- [x] Cadastro de Conta
-- [x] Movimentação de conta
-- [x] Gerenciamento da conta
+Método    |             URL           |            Finalidade
+--------- | ------                    | ----------
+GET       | /cliente                  | Lista todos os cliente
+GET       | /cliente/{id}             | Lista de um cliente por ID
+DELETE    | /cliente/{id}             | Inativa um cliente por ID
+PUT       | /cliente/{id}             | Atualiza um cliente por ID
+POST      | /cliente/cadastrar        | Adiciona um novo cliente
+POST      | /cliente/logar            | Acessa a conta do cliente
+GET       | /conta                    | Lista todas as contas
+GET       | /conta/{id}               | Lista conta por ID
+DELETE    | /conta/{id}               | Inativa conta por ID
+POST      | /conta/criar              | Adiciona uma nova conta
+GET       | /conta/movimentacoes/{id} | Lista movimentação da conta por ID
+GET       | /conta/conta/saldo/{id}   | Lista saldo da conta por ID
+GET       | /movimentacoes            | Lista todas movimentações
+POST      | /movimentacoes/depositar  | Realiza um depósito em conta
+POST      | /movimentacoes/sacar              | Realiza um saque em conta
+POST      | /movimentacoes/transferir/{id}    | Realiza uma movimentação entre contas
+  
+  
 
 
 > ### 🛠 Tecnologias
