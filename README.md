@@ -50,7 +50,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 > ### 🛠 Estrutura de Diretórios  
   
   ```shell
-.gitignore
+│   .gitignore
 │   buildspec.yml
 │   mvnw
 │   mvnw.cmd
