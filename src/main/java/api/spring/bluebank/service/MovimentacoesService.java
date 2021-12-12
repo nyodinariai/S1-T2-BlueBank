@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import api.spring.bluebank.model.Conta;
 import api.spring.bluebank.model.Movimentacoes;
+import api.spring.bluebank.model.enun.TipoMovimentacao;
 import api.spring.bluebank.repository.ContaRepository;
 import api.spring.bluebank.repository.MovimentacoesRepository;
 
@@ -52,20 +53,30 @@ public class MovimentacoesService {
 		}
 	}
 	
-	public ResponseEntity<Movimentacoes> tranferir(Movimentacoes valor, Movimentacoes destino) {
+	public ResponseEntity<Movimentacoes> tranferir(Movimentacoes valor, Long destino) {
 		List<Conta> contaExiste = cRepository.findByConta(valor.getConta());
 		valor.setSaldoInicial(contaExiste.get(0).getSaldo());
 		valor.setSaldoFinal(valor.getSaldoInicial() - valor.getValor());
 		contaExiste.get(0).setSaldo(valor.getSaldoFinal());
 		Movimentacoes inserir = new Movimentacoes(valor.getConta(), valor.getTipoMovimentacao(), valor.getValor(), valor.getSaldoInicial(), valor.getSaldoFinal());
 		
-		List<Conta> contaDestino = cRepository.findByConta(destino.getConta());
-		destino.setSaldoInicial(contaDestino.get(0).getSaldo());
-		destino.setSaldoFinal(destino.getSaldoInicial() + valor.getValor());
-		contaDestino.get(0).setSaldo(destino.getSaldoFinal());
-		Movimentacoes destino1 = new Movimentacoes(destino.getConta(), destino.getTipoMovimentacao(), destino.getValor(), destino.getSaldoInicial(), destino.getSaldoFinal());
+//		List<Conta> contaDestino = cRepository.findByConta(destino.getConta());
+//		destino.setSaldoInicial(contaDestino.get(0).getSaldo());
+//		destino.setSaldoFinal(destino.getSaldoInicial() + valor.getValor());
+//		contaDestino.get(0).setSaldo(destino.getSaldoFinal());
+//		Movimentacoes destino1 = new Movimentacoes(destino.getConta(), destino.getTipoMovimentacao(), destino.getValor(), destino.getSaldoInicial(), destino.getSaldoFinal());
+		
+		List<Conta> contaDestino = cRepository.findByContaDestino(destino);
+		Movimentacoes movimentacaoDestino = new Movimentacoes();
+		movimentacaoDestino.setConta(contaDestino.get(0));
+		movimentacaoDestino.setSaldoInicial(contaDestino.get(0).getSaldo());
+		movimentacaoDestino.setTipoMovimentacao(TipoMovimentacao.TRANSFERENCIA);
+		movimentacaoDestino.setValor(valor.getValor());
+		movimentacaoDestino.setSaldoFinal(movimentacaoDestino.getSaldoInicial() + valor.getValor());
+		contaDestino.get(0).setSaldo(movimentacaoDestino.getSaldoFinal());
+		
 		if (!contaExiste.isEmpty() && !contaDestino.isEmpty() && valor.getSaldoInicial() >= valor.getValor()) {
-			Movimentacoes save = mRepository.save(destino1);
+			Movimentacoes save = mRepository.save(movimentacaoDestino);
 			return ResponseEntity.status(201).body(mRepository.save(inserir));
 			
 		} else {
