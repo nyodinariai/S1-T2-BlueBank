@@ -5,8 +5,9 @@
 #### A PAN Academy juntamente com o Banco Pan fomalizaram o programa para aprimorar o conhecimento em JAVA e Cloud, com uma ementa bem elaborada para os alunos, com aulas diárias e no sábado, formatada para o projeto. Além do conhecimento teórico teremos a aplicação do aprendizado em um Projeto Final.
 
 
-> Status: 🚀 Em desenvolvimento...  🚧
-
+> ### 🛠 Projeto Final / Repositório
+- [Repositório](https://github.com/nyodinariai/S1-T2-BlueBank)
+ 
 > ### 🛠 Desenvolvedores da Squad
 
 - [Clayton Cesar Batista](https://github.com/Claytoncb82/)
@@ -35,88 +36,81 @@ POST      | /movimentacoes/depositar  | Realiza um depósito em conta
 POST      | /movimentacoes/sacar              | Realiza um saque em conta
 POST      | /movimentacoes/transferir/{id}    | Realiza uma movimentação entre contas
   
-  
-
-
 > ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Eclipse](https://www.eclipse.org/)
 - [SQL]()
-- [Java]()
-- [MySQL]()
-- [Amazon Web Service]()
+- [Java](https://www.java.com/pt-BR/)
+- [MySQL](https://www.mysql.com/)
+- [Amazon Web Service](https://aws.amazon.com/pt/)
 - [Jira](https://www.atlassian.com/br/software/jira/)
-- [Main Repository]()
-- [Xampp]()
-
   
 > ### 🛠 Estrutura de Diretórios  
   
   ```shell
-└───apibluebank  
-    │   .gitignore  
-    │   api-spring-aws.iml  
-    │   buildspec.yml  
-    │   mvnw  
-    │   mvnw.cmd  
-    │   pom.xml  
-    │   README.md   
-    └───src  
-        ├───main  
-        │   ├───java  
-        │   │   └───api  
-        │   │       └───spring  
-        │   │           └───bluebank  
-        │   │               │   ApibluebankApplication.java  
-        │   │               │   buildspec.yml  
-        │   │               │  
-        │   │               ├───configuration  
-        │   │               │       SwaggerConfig.java  
-        │   │               │  
-        │   │               ├───controller  
-        │   │               │       ClienteController.java  
-        │   │               │       ContaController.java  
-        │   │               │       MovimentacoesController.java  
-        │   │               │  
-        │   │               ├───exception  
-        │   │               │       NaoEcontrado.java  
-        │   │               │  
-        │   │               ├───model  
-        │   │               │   │   Cliente.java  
-        │   │               │   │   Conta.java  
-        │   │               │   │   Endereco.java  
-        │   │               │   │   Movimentacoes.java  
-        │   │               │   │   TipoCliente.java  
-        │   │               │   │  
-        │   │               │   └───enun  
-        │   │               │           TipoCliente.java  
-        │   │               │           TipoConta.java  
-        │   │               │           TipoMovimentacao.java  
-        │   │               │           UF.java  
-        │   │               │  
-        │   │               ├───repository  
-        │   │               │       ClienteRepository.java  
-        │   │               │       ContaRepository.java  
-        │   │               │       MovimentacoesRepository.java  
-        │   │               │  
-        │   │               ├───security  
-        │   │               │       BasicSecurityConfig.java  
-        │   │               │       UserDetailsImplements.java  
-        │   │               │       UserDetailsServiceImplements.java  
-        │   │               │  
-        │   │               └───service  
-        │   │                       ClienteService.java  
-        │   │                       ContaService.java  
-        │   │                       MovimentacoesService.java  
-        │   │  
-        │   └───resources  
-        │           application.properties  
-        │  
-        └───test  
-            └───java  
-                └───api  
-                    └───spring  
-                        └───bluebank  
-                                ApibluebankApplicationTests.java  
+.gitignore
+│   buildspec.yml
+│   mvnw
+│   mvnw.cmd
+│   openapi.yml
+│   pom.xml
+│   README.md
+└───src
+    ├───main
+    │   ├───java
+    │   │   └───api
+    │   │       └───spring
+    │   │           └───bluebank
+    │   │               │   ApibluebankApplication.java
+    │   │               │   buildspec.yml
+    │   │               │
+    │   │               ├───configuration
+    │   │               │       AwsSnsConfig.java
+    │   │               │       SwaggerConfig.java
+    │   │               │
+    │   │               ├───controller
+    │   │               │       ClienteController.java
+    │   │               │       ContaController.java
+    │   │               │       MovimentacoesController.java
+    │   │               │       SnsAwsController.java
+    │   │               │
+    │   │               ├───model
+    │   │               │   │   Cliente.java
+    │   │               │   │   Conta.java
+    │   │               │   │   Endereco.java
+    │   │               │   │   Movimentacoes.java
+    │   │               │   │   TipoCliente.java
+    │   │               │   │
+    │   │               │   └───enun
+    │   │               │           TipoCliente.java
+    │   │               │           TipoConta.java
+    │   │               │           TipoMovimentacao.java
+    │   │               │           UF.java
+    │   │               │
+    │   │               ├───repository
+    │   │               │       ClienteRepository.java
+    │   │               │       ContaRepository.java
+    │   │               │       MovimentacoesRepository.java
+    │   │               │
+    │   │               ├───security
+    │   │               │       BasicSecurityConfig.java
+    │   │               │       UserDetailsImplements.java
+    │   │               │       UserDetailsServiceImplements.java
+    │   │               │
+    │   │               └───service
+    │   │                       ClienteService.java
+    │   │                       ContaService.java
+    │   │                       MovimentacoesService.java
+    │   │
+    │   └───resources
+    │           application.properties
+    │           openapi.properties
+    │
+    └───test
+        └───java
+            └───api
+                └───spring
+                    └───bluebank
+                            ApibluebankApplicationTests.java
